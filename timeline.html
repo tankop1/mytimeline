@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTimeline</title>
+
+    <link rel="stylesheet" href="timeline.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0bb23f7c87.js" crossorigin="anonymous"></script> <!--SVG Icon Kit--> <!-- Some SVG tags were taken from Google -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+
+</head>
+<body>
+    <header>
+
+        <nav>
+
+            <div id="left-nav">
+
+                <a class="secondary-button" href="#">
+                    <!--<img src="#" alt="logo" />-->
+                    <h1>MyTimeline</h1>
+                </a>
+
+            </div>
+
+            <div id="middle-nav">
+                <a href="#" class="secondary-button">How It Works</a>
+                <a href="#" class="secondary-button">My Timeline</a>
+                <a href="#" class="secondary-button">My Slideshow</a>
+            </div>
+
+            <div id="right-nav">
+                <a href="#" class="secondary-button">Login</a>
+                <a href="#" class="primary-button">Sign Up</a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section id="timeline">
+            <div id="timeline-bar"></div>
+        </section>
+
+        <section id="tools">
+
+            <button class="primary-button" id="add-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </button>
+
+            <div>
+                <a href="#" class="secondary-button">Make A Slideshow</a>
+                <a href="#" class="secondary-button">See An Example</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="shader">
+        
+        <section id="add-milestone">
+
+            <button class="primary-button" id="exit-popup">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </button>
+            
+            <form id="form-1">
+
+                <input type="text" class="input" id="title" placeholder="Title" required />
+                <input type="date" class="input" id="date" placeholder="Date" required />
+
+                <div id="categories">
+                    <label for="celebration" class="checkbox">
+                        <input type="checkbox" id="celebration">
+                        <p>🎉</p>
+                        <h3>Celebration</h3>
+                    </label>
+
+                    <label for="holiday" class="checkbox">
+                        <input type="checkbox" id="holiday" />
+                        <p>🎃</p>
+                        <h3>Holiday</h3>
+                    </label>
+
+                    <label for="activity" class="checkbox">
+                        <input type="checkbox" id="activity" />
+                        <p>🎪</p>
+                        <h3>Activity</h3>
+                    </label>
+
+                    <label for="school-related" class="checkbox">
+                        <input type="checkbox" id="school-related" />
+                        <p>🏫</p>
+                        <h3>School Related</h3>
+                    </label>
+
+                    <a href="#" id="add-category" class="primary-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    </a>
+                </div>
+
+                <div id="layouts">
+                    <label for="picture" class="radio">
+                        <input type="radio" id="picture" name="layout" value="picture" required />
+                        <img src="assets/Image Icon-1.png" alt="picture-image" />
+                    </label>
+
+                    <label for="text" class="radio">
+                        <input type="radio" id="text" name="layout" value="text" required />
+                        <img src="assets/Text Icon-1.png" alt="text-image" />
+                    </label>
+
+                    <label for="picture-text" class="radio radio-checked">
+                        <input type="radio" id="picture-text" name="layout" value="picture-text" checked required />
+                        <img src="assets/Image-Text Icon copy-1.png" alt="picture-text-image" />
+                    </label>
+                </div>
+
+                <button type="submit" class="primary-button" id="add-milestone-next">Next</button>
+                
+            </form>
+
+            <form id="form-2">
+
+                <textarea class="textarea" id="description" placeholder="Description" required></textarea>
+
+                <div id="upload-image">
+                    <div id="image-preview">
+                        <img src="#" alt="image preview" id="preview" />
+                        <p>Image Preview<br/><span>🖼️</span></p>
+                    </div>
+
+                    <label id="image-dropper" class="file" for="add-image">
+                        <h3>Upload Image<br/><span>or</span><br/>Drag and Drop</h3>
+                        <input type="file" id="add-image" accept="image/*" required />
+                    </label>
+                </div>
+
+                <button type="submit" class="primary-button" id="add-milestone-submit">Add Milestone</button>
+                
+            </form>
+
+        </section>
+
+        <section id="edit-categories">
+
+            <form>
+                
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+                <div>
+                    <button class="secondary-button emoji-button">❓</button>
+                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                </div>
+
+                <button type="submit" id="save" class="primary-button">Save</button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="timeline.js"></script>
+</body>
+</html>

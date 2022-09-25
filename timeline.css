@@ -1,0 +1,519 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: rgb(32, 32, 32);
+    --secondaryColor: rgb(138, 138, 138);
+    --lightColor: rgb(255, 255, 255);
+    --highlightColor: rgb(0, 181, 160);
+
+    --primaryBorderRadius: 50px;
+    --secondaryBorderRadius: 15px;
+    --smallBorderRadius: 5px;
+
+    --primaryFont: 'Roboto', sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: var(--primaryColor);
+    font-family: var(--primaryFont);
+    font-weight: 500;
+}
+
+/* ---------- COMPONENTS ---------- */
+
+.wrapper {
+    z-index: 1000;
+}
+
+/* BUTTONS */
+
+.primary-button {
+    width: 110px;
+    height: 30px;
+    border-radius: var(--primaryBorderRadius);
+    background-color: var(--highlightColor);
+    color: var(--lightColor);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: filter 400ms;
+}
+
+.primary-button:hover {
+    filter: brightness(0.75);
+}
+
+.secondary-button {
+    color: var(--lightColor);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 400ms;
+    padding: 8px;
+    border-radius: var(--smallBorderRadius);
+}
+
+.secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* INPUTS */
+
+.input {
+    border: 2px solid var(--secondaryColor);
+    border-radius: var(--smallBorderRadius);
+    width: 400px;
+    height: 50px;
+    outline-color: var(--highlightColor);
+    outline-offset: 3px;
+    outline-width: thick;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: var(--primaryFont);
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+}
+
+.input:invalid {
+    outline-color: rgb(255, 75, 75);
+}
+
+.textarea {
+    border: 2px solid var(--secondaryColor);
+    border-radius: var(--smallBorderRadius);
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 150px;
+    max-height: 150px;
+    outline-color: var(--highlightColor);
+    outline-offset: 3px;
+    outline-width: thick;
+    padding: 10px;
+    font-family: var(--primaryFont);
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+}
+
+.textarea:invalid {
+    outline-color: rgb(255, 75, 75);
+}
+
+.checkbox {
+    width: max-content;
+    height: 30px;
+    padding: 10px;
+    border-radius: var(--primaryBorderRadius);
+    background-color: rgb(235, 235, 235);
+    color: var(--primaryColor);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 400ms;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox p {
+    width: 28px;
+    height: min-content;
+}
+
+.checkbox h3 {
+    width: max-content;
+    font-weight: 500;
+    font-family: var(--primaryFont);
+    font-size: 1rem;
+}
+
+.checkbox:hover {
+    background-color: rgb(182, 220, 215);
+}
+
+.checkbox-checked {
+    background-color: var(--highlightColor) !important;
+}
+
+.radio {
+    width: 130px;
+    height: 150px;
+    border: 2px solid var(--secondaryColor);
+    border-radius: var(--smallBorderRadius);
+    transition: background-color 400ms;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio img {
+    width: 80%;
+}
+
+.radio:hover {
+    background-color: rgba(182, 220, 215, 0.25);
+}
+
+.radio-checked {
+    background-color: var(--highlightColor) !important;
+}
+
+.radio input {
+    display: none;
+}
+
+/* ---------- HEADER ---------- */
+
+header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav #left-nav {
+    width: 10%;
+    height: 50px;
+    font-family: 'Bungee', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+nav #left-nav a {
+    text-decoration: none;
+    color: white;
+    height: 45px;
+}
+
+nav #middle-nav {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav #right-nav {
+    width: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ---------- MAIN TIMELINE ---------- */
+
+main {
+    height: calc(100% - 60px);
+}
+
+#timeline {
+    height: 500px;
+    background: rgb(32,32,32);
+    background: linear-gradient(180deg, rgba(32,32,32,1) 0%, rgb(60, 60, 60) 47%, rgb(60, 60, 60) 53%, rgba(32,32,32,1) 100%);
+    overflow-x: scroll;
+    margin-top: calc(25% - 250px);
+}
+
+#timeline-bar {
+    height: 35px;
+    width: 150%;
+    background-color: white;
+    margin-top: calc(250px - 17.5px);
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 10px;
+    transition: background-color 400ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- TOOLS SECTION ---------- */
+
+#tools {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+#tools button {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+}
+
+#tools button svg {
+    width: 30px;
+}
+
+#tools div {
+    width: 350px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ---------- ADD ENTRY FORM ---------- */
+
+#shader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 400ms;
+}
+
+#shader #add-milestone {
+    background-color: white;
+    border-radius: var(--secondaryBorderRadius);
+    width: 650px;
+    height: 600px;
+}
+
+#shader #add-milestone button {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -10px;
+    left: 630px;
+}
+
+#shader #add-milestone button svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+}
+
+#shader #add-milestone form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+#form-2 {
+    display: none !important;
+}
+
+#shader #categories {
+    width: 415px;
+    margin-left: -15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#shader #categories .checkbox {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+#categories #add-category {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(235, 235, 235);
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+#categories svg {
+    width: 20px;
+    height: 20px;
+}
+
+#shader #layouts {
+    width: 415px;
+    height: 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#shader #add-milestone button[type='submit'] {
+    width: 150px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: -1265px;
+    margin-bottom: 65px;
+    margin-top: -25px;
+}
+
+/* EDIT CATEGORIES */
+
+#edit-categories {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 300px;
+    background-color: var(--lightColor);
+    border-top-left-radius: var(--secondaryBorderRadius);
+    border-bottom-left-radius: var(--secondaryBorderRadius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(300px);
+    transition: transform 500ms;
+}
+
+#edit-categories form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 85%;
+}
+
+#edit-categories form div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 245px;
+}
+
+#edit-categories form div input {
+    width: 185px;
+    height: 40px;
+}
+
+#edit-categories form div button {
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 1.2rem;
+}
+
+#edit-categories #save {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* IMAGE UPLOAD */
+
+#upload-image {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#image-preview {
+    width: 225px;
+    height: 100%;
+    border: 2px solid var(--secondaryColor);
+    border-radius: var(--smallBorderRadius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(182, 220, 215);
+}
+
+#image-preview p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#image-preview p span {
+    font-size: 1.5rem;
+}
+
+#image-preview #preview {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#image-dropper {
+    width: 150px;
+    height: 100%;
+    border: 2px dashed var(--secondaryColor);
+    border-radius: var(--smallBorderRadius);
+    outline-color: var(--highlightColor);
+    outline-offset: 3px;
+    outline-width: thick;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 400ms;
+    cursor: pointer;
+}
+
+#image-dropper:hover {
+    background-color: rgba(182, 220, 215, 0.25);
+}
+
+#image-dropper:invalid {
+    outline-color: rgb(255, 75, 75);
+}
+
+#image-dropper input {
+    display: none;
+}
+
+#image-dropper h3 {
+    text-align: center;
+}
+
+#image-dropper h3 span {
+    font-size: 1.5rem;
+    color: var(--primaryColor);
+}
