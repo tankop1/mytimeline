@@ -231,24 +231,33 @@ main {
 }
 
 #timeline {
-    height: 500px;
+    width: 100%;
+    height: 700px;
     background: rgb(32,32,32);
     background: linear-gradient(180deg, rgba(32,32,32,1) 0%, rgb(60, 60, 60) 47%, rgb(60, 60, 60) 53%, rgba(32,32,32,1) 100%);
     overflow-x: scroll;
-    margin-top: calc(25% - 250px);
+    margin-top: calc(25% - 350px);
 }
 
 #timeline-bar {
-    height: 35px;
-    width: 150%;
+    width: 200%;
+    height: 30px;
+    width: 100%;
     background-color: white;
-    margin-top: calc(250px - 17.5px);
+    margin-top: -25px;
+    margin-bottom: -30px;
+}
+
+#timeline-top, #timeline-bottom {
+    width: 200%;
+    display: flex;
 }
 
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
     height: 10px;
+    display: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -265,13 +274,69 @@ main {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
+/* ---------- MILESTONES ---------- */
+
+.milestone {
+    width: 250px;
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
+    border-radius: var(--secondaryBorderRadius);
+    overflow: hidden;
+    transform: scale(0.75);
+}
+
+.milestone .milestone-text {
+    padding: 15px;
+}
+
+.milestone h2 {
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.milestone .milestone-categories {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-top: 10px;
+}
+
+.milestone .category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 8px;
+    font-size: 0.85rem;
+    border-radius: var(--primaryBorderRadius);
+    background-color: var(--highlightColor);
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.milestone .category h3 {
+    margin-left: 5px;
+    font-size: 0.75rem;
+    color: var(--lightColor);
+}
+
+.milestone img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: red;
+}
+
 /* ---------- TOOLS SECTION ---------- */
 
 #tools {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 200px;
+    height: 150px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -320,7 +385,13 @@ main {
     height: 600px;
 }
 
-#shader #add-milestone button {
+#shader #add-milestone #form-container {
+    width: 650px;
+    height: 500px;
+    overflow: hidden;
+}
+
+#shader #add-milestone #exit-popup {
     width: 30px;
     height: 30px;
     position: relative;
@@ -342,10 +413,11 @@ main {
     width: 100%;
     height: 100%;
     margin-top: 20px;
+    transition: transform 750ms;
 }
 
 #form-2 {
-    display: none !important;
+    transform: translateY(-550px) translateX(650px);
 }
 
 #shader #categories {
@@ -387,9 +459,27 @@ main {
     width: 150px;
     font-size: 1rem;
     font-weight: 600;
-    margin-left: -1265px;
-    margin-bottom: 65px;
-    margin-top: -25px;
+}
+
+#add-milestone #form-bottom {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: calc(50% - 200px)
+}
+
+#add-milestone #form-bottom div {
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#add-milestone #form-bottom div button {
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
 }
 
 /* EDIT CATEGORIES */

@@ -14,6 +14,8 @@
 
     <script src="https://kit.fontawesome.com/0bb23f7c87.js" crossorigin="anonymous"></script> <!--SVG Icon Kit--> <!-- Some SVG tags were taken from Google -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
 
 </head>
@@ -49,7 +51,109 @@
     <main>
 
         <section id="timeline">
+
+            <div id="timeline-top">
+                <div class="milestone picture-text-milestone">
+
+                    <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
+                    <div class="milestone-text">
+    
+                        <h2>Earned Eagle Rank</h2>
+    
+                        <div class="milestone-categories">
+                            <div class="category">
+                                <p>🎉</p>
+                                <h3>Celebration</h3>
+                            </div>
+                            <div class="category">
+                                <p>✌</p>
+                                <h3>Scouting</h3>
+                            </div>
+                        </div>
+    
+                        <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
+    
+                    </div>
+                    
+                </div>
+
+                <div class="milestone text-milestone">
+                    <div class="milestone-text">
+    
+                        <h2>Earned Eagle Rank</h2>
+    
+                        <div class="milestone-categories">
+                            <div class="category">
+                                <p>🎉</p>
+                                <h3>Celebration</h3>
+                            </div>
+                            <div class="category">
+                                <p>✌</p>
+                                <h3>Scouting</h3>
+                            </div>
+                        </div>
+    
+                        <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
+    
+                    </div>
+                    
+                </div>
+
+                <div class="milestone picture-milestone">
+
+                    <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
+                    <div class="milestone-text">
+    
+                        <h2>Earned Eagle Rank</h2>
+    
+                        <div class="milestone-categories">
+                            <div class="category">
+                                <p>🎉</p>
+                                <h3>Celebration</h3>
+                            </div>
+                            <div class="category">
+                                <p>✌</p>
+                                <h3>Scouting</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
             <div id="timeline-bar"></div>
+
+            <div id="timeline-bottom">
+                <div class="milestone picture-text-milestone">
+
+                    <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
+                    <div class="milestone-text">
+    
+                        <h2>Earned Eagle Rank</h2>
+    
+                        <div class="milestone-categories">
+                            <div class="category">
+                                <p>🎉</p>
+                                <h3>Celebration</h3>
+                            </div>
+                            <div class="category">
+                                <p>✌</p>
+                                <h3>Scouting</h3>
+                            </div>
+                            <div class="category">
+                                <p>✌</p>
+                                <h3>Scouting</h3>
+                            </div>
+                        </div>
+    
+                        <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
+    
+                    </div>
+                    
+                </div>
+            </div>
+
         </section>
 
         <section id="tools">
@@ -75,81 +179,90 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
             </button>
             
-            <form id="form-1">
+            <div id="form-container">
+                <form id="form-1">
 
-                <input type="text" class="input" id="title" placeholder="Title" required />
-                <input type="date" class="input" id="date" placeholder="Date" required />
-
-                <div id="categories">
-                    <label for="celebration" class="checkbox">
-                        <input type="checkbox" id="celebration">
-                        <p>🎉</p>
-                        <h3>Celebration</h3>
-                    </label>
-
-                    <label for="holiday" class="checkbox">
-                        <input type="checkbox" id="holiday" />
-                        <p>🎃</p>
-                        <h3>Holiday</h3>
-                    </label>
-
-                    <label for="activity" class="checkbox">
-                        <input type="checkbox" id="activity" />
-                        <p>🎪</p>
-                        <h3>Activity</h3>
-                    </label>
-
-                    <label for="school-related" class="checkbox">
-                        <input type="checkbox" id="school-related" />
-                        <p>🏫</p>
-                        <h3>School Related</h3>
-                    </label>
-
-                    <a href="#" id="add-category" class="primary-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-                    </a>
-                </div>
-
-                <div id="layouts">
-                    <label for="picture" class="radio">
-                        <input type="radio" id="picture" name="layout" value="picture" required />
-                        <img src="assets/Image Icon-1.png" alt="picture-image" />
-                    </label>
-
-                    <label for="text" class="radio">
-                        <input type="radio" id="text" name="layout" value="text" required />
-                        <img src="assets/Text Icon-1.png" alt="text-image" />
-                    </label>
-
-                    <label for="picture-text" class="radio radio-checked">
-                        <input type="radio" id="picture-text" name="layout" value="picture-text" checked required />
-                        <img src="assets/Image-Text Icon copy-1.png" alt="picture-text-image" />
-                    </label>
-                </div>
-
-                <button type="submit" class="primary-button" id="add-milestone-next">Next</button>
-                
-            </form>
-
-            <form id="form-2">
-
-                <textarea class="textarea" id="description" placeholder="Description" required></textarea>
-
-                <div id="upload-image">
-                    <div id="image-preview">
-                        <img src="#" alt="image preview" id="preview" />
-                        <p>Image Preview<br/><span>🖼️</span></p>
+                    <input type="text" class="input" id="title" placeholder="Title" maxlength="50" required />
+                    <input type="date" class="input" id="date" placeholder="Date" required />
+    
+                    <div id="categories">
+                        <label for="celebration" class="checkbox">
+                            <input type="checkbox" id="celebration">
+                            <p>🎉</p>
+                            <h3>Celebration</h3>
+                        </label>
+    
+                        <label for="holiday" class="checkbox">
+                            <input type="checkbox" id="holiday" />
+                            <p>🎃</p>
+                            <h3>Holiday</h3>
+                        </label>
+    
+                        <label for="activity" class="checkbox">
+                            <input type="checkbox" id="activity" />
+                            <p>🎪</p>
+                            <h3>Activity</h3>
+                        </label>
+    
+                        <label for="school-related" class="checkbox">
+                            <input type="checkbox" id="school-related" />
+                            <p>🏫</p>
+                            <h3>School Related</h3>
+                        </label>
+    
+                        <a href="#" id="add-category" class="primary-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                        </a>
                     </div>
+    
+                    <div id="layouts">
+                        <label for="picture" class="radio">
+                            <input type="radio" id="picture" name="layout" value="picture" required />
+                            <img src="assets/Image Icon-1.png" alt="picture-image" />
+                        </label>
+    
+                        <label for="text" class="radio">
+                            <input type="radio" id="text" name="layout" value="text" required />
+                            <img src="assets/Text Icon-1.png" alt="text-image" />
+                        </label>
+    
+                        <label for="picture-text" class="radio radio-checked">
+                            <input type="radio" id="picture-text" name="layout" value="picture-text" checked required />
+                            <img src="assets/Image-Text Icon copy-1.png" alt="picture-text-image" />
+                        </label>
+                    </div>
+                    
+                </form>
+    
+                <form id="form-2">
+    
+                    <textarea class="textarea" id="description" placeholder="Description" maxlength="100" required></textarea>
+    
+                    <div id="upload-image">
+                        <div id="image-preview">
+                            <img src="#" alt="image preview" id="preview" />
+                            <p>Image Preview<br/><span>🖼️</span></p>
+                        </div>
+    
+                        <label id="image-dropper" class="file" for="add-image">
+                            <h3>Upload Image<br/><span>or</span><br/>Drag and Drop</h3>
+                            <input type="file" id="add-image" accept="image/*" required />
+                        </label>
+                    </div>
+                    
+                </form>
+            </div>
 
-                    <label id="image-dropper" class="file" for="add-image">
-                        <h3>Upload Image<br/><span>or</span><br/>Drag and Drop</h3>
-                        <input type="file" id="add-image" accept="image/*" required />
-                    </label>
+            <div id="form-bottom">
+
+                <div id="form-pages">
+                    <button class="primary-button" id="form-page-1">1</button>
+                    <button class="primary-button" id="form-page-2">2</button>
                 </div>
 
-                <button type="submit" class="primary-button" id="add-milestone-submit">Add Milestone</button>
+                <button class="primary-button" id="form-submit">Next</button>
                 
-            </form>
+            </div>
 
         </section>
 

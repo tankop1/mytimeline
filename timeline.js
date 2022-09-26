@@ -10,7 +10,27 @@ let categories = [{
 }, {
     title: 'School Related',
     emoji: '🏫'
-}]
+}];
+
+let milestones = [{
+    title: 'Birth Date',
+    date: new Date('12/30/2004'),
+    categories: [{
+        title: 'Celebration',
+        emoji: '🎉'
+    }],
+    layout: 'picture-text',
+    description: 'This was the day I was born in Dallas, TX',
+    imageSource: '#'
+}];
+
+// ---------- TIMELINE SIDEWAYS SCROLLING ----------
+$('#timeline').on('mousewheel DOMMouseScroll', event => {
+    event.preventDefault();
+
+    console.log('run');
+    scrollContainer.scrollLeft += event.deltaY;
+});
 
 // ---------- CHECKBOX & RADIO CSS ----------
 
@@ -65,6 +85,7 @@ function togglePopup()
         $('#shader').css({'background-color': 'rgba(0, 0, 0, 0)'});
         setTimeout(() => {
             $('#shader').css({'display': 'none'});
+            clearForm();
         }, 200);
     }
 
@@ -87,6 +108,7 @@ function removePopup(event)
     $('#shader').css({'background-color': 'rgba(0, 0, 0, 0)'});
     setTimeout(() => {
         $('#shader').css({'display': 'none'});
+        clearForm();
     }, 200);
 
     popupShowing = false;
@@ -94,6 +116,7 @@ function removePopup(event)
 
 // ---------- ADD MILESTONE FORM ----------
 
+// PAGE ONE
 function fillInCategories(categoryList)
 {
     let parent = $('#categories');
@@ -119,6 +142,111 @@ function fillInCategories(categoryList)
     initializeCSS();
 }
 
+function changePages(page) {
+    let pageOne = $('#form-1');
+    let pageTwo = $('#form-2');
+
+    if (page == 2) {
+        if (!editCategoriesShown) toggleCategory();
+
+        pageOne.css({'transform': 'translateX(-650px)'});
+        pageTwo.css({'transform': 'translateY(-550px) translateX(0px)'});
+        $('#form-submit').text('Add Milestone');
+    }
+
+    else if (page == 1) {
+        pageOne.css({'transform': 'translateX(0px)'});
+        pageTwo.css({'transform': 'translateY(-550px) translateX(650px)'});
+        $('#form-submit').text('Next');
+    }
+}
+
+function handlePageChange() {
+    let form1 = $('#form-1');
+    form1.validate();
+
+    if (form1.valid()) {
+        $('#form-page-1').css({'background-color': 'var(--highlightColor)'});
+        changePages(2);
+    }
+}
+
+function handleSubmit(event) {
+    if ($(event.target).text() == 'Next')
+    {
+        let title = $('#title').val();
+        let date = new Date($('#date').val());
+        let categories = $('input[name="categories"]:checked').val();
+        let layout = $('input[name="layout"]:checked').val();
+
+        if (layout == 'picture')
+        {
+            $('#description').css({'display': 'none'});
+            $('#upload-image').css({'display': 'flex', 'height': '250px'});
+        }
+
+        else if (layout == 'text') {
+            $('#description').css({'display': 'block', 'min-height': '400px', 'max-height': '400px'});
+            $('#upload-image').css({'display': 'none'});
+        }
+
+        else if (layout == 'picture-text') {
+            $('#description').css({'display': 'block', 'min-height': '150px', 'max-height': '150px'});
+            $('#upload-image').css({'display': 'flex', 'height': '200px'});
+        }
+
+        else console.log('ERROR');
+
+        handlePageChange();
+    }
+
+    else {
+        let form2 = $('#form-2');
+        form2.validate();
+
+        if (form2.valid()) {
+            //$('#form-page-2').css({'background-color': 'var(--highlightColor)'});
+            togglePopup();
+        }
+    }
+}
+
+$('#form-submit').click(handleSubmit);
+$('#form-page-1').click(() => {
+    changePages(1);
+});
+$('#form-page-2').click(handlePageChange);
+
+function clearForm()
+{
+    changePages(1);
+    $('#form-page-1').css({'background-color': 'lightgray'});
+
+    // Clear Page One
+    $('#title').val('');
+    $('#date').val('');
+
+    $('.radio').each((index, value) => {
+        if ($(value).children('input').attr('name') == 'layout')
+        {
+            $(value).prop("checked", false);
+            $(value).removeClass('radio-checked');
+        }
+    });
+
+    $('#picture-text').prop("checked", true);
+    $('#picture-text').parent().addClass('radio-checked');
+
+    // Clear Page Two
+    $('#description').val('');
+
+    let preview = $('#preview');
+    preview.attr('src', '#');
+    preview.css({'display': 'none'});
+    $('#image-preview p').css({'display': 'block'});
+}
+
+// PAGE TWO
 function showPreview(event) {
     if (event.target.files.length > 0) {
         let src = URL.createObjectURL(event.target.files[0]);
@@ -212,3 +340,14 @@ function initializeEmojiPicker(pickerList)
 }
 
 initializeEmojiPicker(pickers);
+
+/*
+
+---------- BUG LIST ----------
+1. Date input in form isn't required
+2. Too many categories makes form look bad
+3. File drag and drop doesn't work
+4. CSS doesn't always align with radio inputs (when clicked, box becomes unchecked)
+5. Sometimes pressing emoji button in category editor causes popup to toggle off
+
+*/
