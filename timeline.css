@@ -210,6 +210,10 @@ nav #left-nav a {
     height: 45px;
 }
 
+nav #left-nav a h1 span {
+    color: var(--highlightColor);
+}
+
 nav #middle-nav {
     width: 35%;
     display: flex;
@@ -230,27 +234,18 @@ main {
     height: calc(100% - 60px);
 }
 
-#timeline {
+#milestones {
     width: 100%;
     height: 700px;
     background: rgb(32,32,32);
     background: linear-gradient(180deg, rgba(32,32,32,1) 0%, rgb(60, 60, 60) 47%, rgb(60, 60, 60) 53%, rgba(32,32,32,1) 100%);
-    overflow-x: scroll;
-    margin-top: calc(25% - 350px);
-}
-
-#timeline-bar {
-    width: 200%;
-    height: 30px;
-    width: 100%;
-    background-color: white;
-    margin-top: -25px;
-    margin-bottom: -30px;
-}
-
-#timeline-top, #timeline-bottom {
-    width: 200%;
+    overflow-y: scroll;
+    margin-top: calc(25% - 375px);
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 38px 38px 38px 0px;
 }
 
 /* SCROLLBAR */
@@ -277,12 +272,13 @@ main {
 /* ---------- MILESTONES ---------- */
 
 .milestone {
-    width: 250px;
+    width: calc(250px);
+    height: max-content;
     color: var(--primaryColor);
     background-color: var(--secondaryColor);
     border-radius: var(--secondaryBorderRadius);
     overflow: hidden;
-    transform: scale(0.75);
+    margin-left: 38px;
 }
 
 .milestone .milestone-text {
@@ -295,6 +291,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     text-overflow: ellipsis;
+    font-size: calc(1.5em * 0.75);
 }
 
 .milestone .milestone-categories {
@@ -310,7 +307,7 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 3px 8px;
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * 0.75);
     border-radius: var(--primaryBorderRadius);
     background-color: var(--highlightColor);
     margin-left: 10px;
@@ -319,15 +316,18 @@ main {
 
 .milestone .category h3 {
     margin-left: 5px;
-    font-size: 0.75rem;
+    font-size: calc(0.75rem * 0.75);
     color: var(--lightColor);
 }
 
 .milestone img {
     width: 100%;
-    height: 150px;
+    height: calc(150px * 0.75);
     object-fit: cover;
-    background-color: red;
+}
+
+.milestone .description {
+    font-size: calc(16px * 0.75);
 }
 
 /* ---------- TOOLS SECTION ---------- */
@@ -348,6 +348,7 @@ main {
     border-radius: 50%;
     width: 65px;
     height: 65px;
+    box-shadow: 0px 0px 10px 1px black;
 }
 
 #tools button svg {
