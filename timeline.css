@@ -228,6 +228,27 @@ nav #right-nav {
     justify-content: space-between;
 }
 
+nav #profile-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--highlightColor);
+    cursor: pointer;
+    transition: filter 400ms;
+    margin-top: 15px;
+    border: none;
+    font-family: 'Bungee';
+}
+
+nav #profile-button:hover {
+    filter: brightness(0.75);
+}
+
+nav #logout-button {
+    margin-top: 15px;
+    margin-left: 35px;
+}
+
 /* ---------- MAIN TIMELINE ---------- */
 
 main {
@@ -246,6 +267,23 @@ main {
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 38px 38px 38px 0px;
+}
+
+#milestones-empty, #milestones-no-login {
+    width: 100%;
+    height: 80%;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    left: 0;
+}
+
+#milestones-empty p, #milestones-no-login p {
+    text-align: center;
+    font-size: 1.35rem;
 }
 
 /* SCROLLBAR */
@@ -277,7 +315,6 @@ main {
     color: var(--primaryColor);
     background-color: var(--secondaryColor);
     border-radius: var(--secondaryBorderRadius);
-    overflow: hidden;
     margin-left: 38px;
 }
 
@@ -292,6 +329,10 @@ main {
     text-overflow: ellipsis;
     text-overflow: ellipsis;
     font-size: calc(1.5em * 0.75);
+}
+
+.text-milestone h2 {
+    margin-top: -25px;
 }
 
 .milestone .milestone-categories {
@@ -322,12 +363,35 @@ main {
 
 .milestone img {
     width: 100%;
-    height: calc(150px * 0.75);
+    height: calc(200px * 0.75);
     object-fit: cover;
+    border-top-left-radius: var(--secondaryBorderRadius);
+    border-top-right-radius: var(--secondaryBorderRadius);
+    margin-top: -30px;
 }
 
 .milestone .description {
     font-size: calc(16px * 0.75);
+}
+
+#delete-milestone {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -10px;
+    left: 230px;
+    transform: scale(0.75);
+}
+
+.text-milestone #delete-milestone {
+    top: -25px;
+    left: 215px;
+}
+
+#delete-milestone svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
 }
 
 /* ---------- TOOLS SECTION ---------- */
@@ -384,6 +448,7 @@ main {
     border-radius: var(--secondaryBorderRadius);
     width: 650px;
     height: 600px;
+    display: none;
 }
 
 #shader #add-milestone #form-container {
@@ -607,4 +672,61 @@ main {
 #image-dropper h3 span {
     font-size: 1.5rem;
     color: var(--primaryColor);
+}
+
+/* ---------- LOGIN FORM ---------- */
+
+#shader #login {
+    background-color: white;
+    border-radius: var(--secondaryBorderRadius);
+    width: 500px;
+    height: 400px;
+}
+
+#shader #login #exit-login {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -10px;
+    left: 480px;
+}
+
+#shader #login button svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+}
+
+#login-form, #register-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+    margin-top: 100px;
+}
+
+#register-form {
+    height: 250px;
+    margin-top: 85px;
+}
+
+#login-title, #register-title {
+    margin-top: -100px;
+    font-size: 2rem;
+    font-family: 'Bungee', cursive;
+}
+
+#login-bottom, #register-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 65px;
+}
+
+#login-bottom a, #register-bottom a {
+    color: var(--highlightColor);
 }

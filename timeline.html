@@ -40,8 +40,13 @@
             </div>
 
             <div id="right-nav">
-                <a href="#" class="secondary-button">Login</a>
-                <a href="#" class="primary-button">Sign Up</a>
+                <a href="#" class="secondary-button" id="login-button">Login</a>
+                <a href="#" class="primary-button" id="register-button">Sign Up</a>
+
+                <a href="#" class="secondary-button" id="logout-button">Logout</a>
+                <button id="profile-button">
+                    <h2>TK</h2>
+                </button>
             </div>
 
         </nav>
@@ -50,105 +55,15 @@
 
     <main>
 
-        <section id="milestones">
+        <section id="milestones"></section>
 
-            <div class="milestone picture-text-milestone">
+        <div id="milestones-empty">
+            <p>You don't have any milestones yet.<br/>Press the plus button at the bottom of the screen to add one.</p>
+        </div>
 
-                <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
-                <div class="milestone-text">
-
-                    <h2>Earned Eagle Rank</h2>
-
-                    <div class="milestone-categories">
-                        <div class="category">
-                            <p>🎉</p>
-                            <h3>Celebration</h3>
-                        </div>
-                        <div class="category">
-                            <p>✌</p>
-                            <h3>Scouting</h3>
-                        </div>
-                    </div>
-
-                    <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
-
-                </div>
-                
-            </div>
-
-            <div class="milestone text-milestone">
-                <div class="milestone-text">
-
-                    <h2>Earned Eagle Rank</h2>
-
-                    <div class="milestone-categories">
-                        <div class="category">
-                            <p>🎉</p>
-                            <h3>Celebration</h3>
-                        </div>
-                        <div class="category">
-                            <p>✌</p>
-                            <h3>Scouting</h3>
-                        </div>
-                    </div>
-
-                    <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
-
-                </div>
-                
-            </div>
-
-            <div class="milestone picture-milestone">
-
-                <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
-                <div class="milestone-text">
-
-                    <h2>Earned Eagle Rank</h2>
-
-                    <div class="milestone-categories">
-                        <div class="category">
-                            <p>🎉</p>
-                            <h3>Celebration</h3>
-                        </div>
-                        <div class="category">
-                            <p>✌</p>
-                            <h3>Scouting</h3>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-            </div>
-
-            <div class="milestone picture-text-milestone">
-
-                <img src="https://images.unsplash.com/photo-1639161863028-1b3979c6001a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" alt="milestone-text" />
-                <div class="milestone-text">
-
-                    <h2>Earned Eagle Rank</h2>
-
-                    <div class="milestone-categories">
-                        <div class="category">
-                            <p>🎉</p>
-                            <h3>Celebration</h3>
-                        </div>
-                        <div class="category">
-                            <p>✌</p>
-                            <h3>Scouting</h3>
-                        </div>
-                        <div class="category">
-                            <p>✌</p>
-                            <h3>Scouting</h3>
-                        </div>
-                    </div>
-
-                    <p class="description">On this day I earned the rank of eagle in Boy Scouts, an honor that only 4% of scouts ever achieve</p>
-
-                </div>
-                
-            </div>
-
-        </section>
+        <div id="milestones-no-login">
+            <p>Please login or create an account to view your milestones.</p>
+        </div>
 
         <section id="tools">
 
@@ -266,54 +181,91 @@
                 
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
                 <div>
                     <button class="secondary-button emoji-button">❓</button>
-                    <input type="text" class="input category-name" id="category-name" placeholder="Category Name" />
+                    <input type="text" class="input category-name" placeholder="Category Name" />
                 </div>
 
-                <button type="submit" id="save" class="primary-button">Save</button>
+                <button type="submit" id="save-categories" class="primary-button">Save</button>
 
+            </form>
+
+        </section>
+
+        <section id="login">
+
+            <button class="primary-button" id="exit-login">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </button>
+            
+            <form id="login-form">
+
+                <h2 id="login-title">Login</h2>
+
+                <input type="email" class="input" id="login-email" placeholder="Email" required />
+                <input type="password" class="input" id="login-password" placeholder="Password" required />
+
+                <div id="login-bottom">
+                    <button class="primary-button" id="login-submit">Login</button>
+                    <a href="#" id="login-link">Don't have an account? Click here</a>
+                </div>
+                
+            </form>
+
+            <form id="register-form">
+
+                <h2 id="register-title">Register</h2>
+
+                <input type="email" class="input" id="register-email" placeholder="Email" required />
+                <input type="password" class="input" id="register-password" placeholder="Password" required />
+                <input type="password" class="input" id="register-confirm" placeholder="Confirm Password" required />
+
+                <div id="register-bottom">
+                    <button class="primary-button" id="register-submit">Register</button>
+                    <a href="#" id="register-link">Already have an account? Click here</a>
+                </div>
+                
             </form>
 
         </section>
 
     </div>
 
-    <script src="timeline.js"></script>
+    <script type="module" src="timeline.js"></script>
     <script type="module" src="firebase.js"></script>
 </body>
 </html>

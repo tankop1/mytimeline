@@ -1,36 +1,149 @@
-let categories = [{
-    title: 'Celebration',
-    emoji: '🎉'
-}, {
-    title: 'Holiday',
-    emoji: '🎃'
-}, {
-    title: 'Activity',
-    emoji: '🎪'
-}, {
-    title: 'School Related',
-    emoji: '🏫'
-}];
+import { getUserData, updateMilestones, updateCategories } from '/JavaScript/mytimeline/firebase.js';
 
-let milestones = [{
-    title: 'Birth Date',
-    date: new Date('12/30/2004'),
-    categories: [{
-        title: 'Celebration',
-        emoji: '🎉'
-    }],
-    layout: 'picture-text',
-    description: 'This was the day I was born in Dallas, TX',
-    imageSource: '#'
-}];
+let currentImageSource = '';
 
-// ---------- TIMELINE SIDEWAYS SCROLLING ----------
-$('#timeline').on('mousewheel DOMMouseScroll', event => {
-    event.preventDefault();
+let categories = [];
+let milestones = [];
 
-    console.log('run');
-    scrollContainer.scrollLeft += event.deltaY;
-});
+// ---------- ADDING MILESTONES ----------
+
+export async function displayMilestones()
+{
+    let data = await getUserData();
+    milestones = data.milestones;
+    categories = data.categories;
+
+    let parent = $('#milestones');
+    parent.html('');
+
+    if (data.milestones.length == 0) $('#milestones-empty').css({'display': 'flex'});
+    else $('#milestones-empty').css({'display': 'none'});
+
+    data.milestones.forEach(element => {
+
+        let categoryHTML = '';
+
+        element.categories.forEach(category => {
+            categoryHTML += `<div class="category">
+            <p>${category.emoji}</p>
+            <h3>${category.title}</h3>
+        </div>`;
+        });
+
+        if (element.layout == 'text') {
+            parent.html(parent.html() + `
+            <div class="milestone text-milestone">
+                <div class="milestone-text">
+
+                    <button class="primary-button" id="delete-milestone">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    </button>
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+
+                    <p class="description">${element.description}</p>
+
+                </div>
+                
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture') {
+            parent.html(parent.html() + `
+            <div class="milestone picture-milestone">
+
+                <button class="primary-button" id="delete-milestone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                </button>
+
+                <img src="${element.imageSource}" alt="milestone-text" />
+                <div class="milestone-text">
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+                </div>
+                
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture-text') {
+            parent.html(parent.html() + `
+            <div class="milestone picture-text-milestone">
+
+                <button class="primary-button" id="delete-milestone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                </button>
+
+                <img src="${element.imageSource}" alt="milestone-text" />
+                <div class="milestone-text">
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+
+                    <p class="description">${element.description}</p>
+
+                </div>
+                
+            </div>
+            `);
+        }
+        
+    });
+}
+
+function addMilestone()
+{
+    let title = $('#title').val();
+    let date = {
+        day: $('#date').val().slice(5, 7),
+        month: $('#date').val().slice(8, 10),
+        year: $('#date').val().slice(0, 4)
+    }
+    let layout = $('input[name="layout"]:checked').val();
+    let description = $('#description').val();
+    
+    let imageSource = '';
+    if (layout != 'text') imageSource = currentImageSource;
+
+    let categories = $('#categories .checkbox').toArray();
+    let newCategories = [];
+
+    categories.forEach(category => {
+        if ($(category).hasClass('checkbox-checked'))
+        {
+            newCategories.push({
+                emoji: $(category).children('p').text(),
+                title: $(category).children('h3').text()
+            });
+        }
+    });
+
+    milestones.push({
+        title: title,
+        date: date,
+        categories: newCategories,
+        layout: layout,
+        description: description,
+        imageSource: imageSource
+    });
+
+    updateMilestones(milestones);
+    displayMilestones();
+}
+
+$('#logout-button').click(clearMilestones);
+
+function clearMilestones()
+{
+    let parent = $('#milestones');
+    parent.html('');
+}
 
 // ---------- CHECKBOX & RADIO CSS ----------
 
@@ -71,12 +184,26 @@ initializeCSS();
 // ---------- POPUP ----------
 let popupShowing = false;
 
-$('#add-button').click(togglePopup);
-$('#exit-popup').click(togglePopup);
+$('#add-button').click(() => {    
+    if ($('#profile-button').css('display') == 'none') togglePopupForms('#login-form');
+    else togglePopupForms('#add-milestone');
+});
+
+$('#exit-popup').click(() => {togglePopupForms('#add-milestone')});
+$('#register-button').click(() => {togglePopupForms('#register-form')});
+$('#register-link').click(() => {switchPopupForms('#login-form')});
+$('#login-button').click(() => {togglePopupForms('#login-form')});
+$('#login-link').click(() => {switchPopupForms('#register-form')});
+$('#exit-login').click(togglePopup);
 $('#shader').click(removePopup)
 
 function togglePopup()
 {
+    $('#add-milestone').css({'display': 'none'});
+    $('#login').css({'display': 'none'});
+    $('#login-form').css({'display': 'none'});
+    $('#register-form').css({'display': 'none'});
+
     if (!editCategoriesShown) toggleCategory();
     fillInCategories(categories);
 
@@ -104,6 +231,11 @@ function removePopup(event)
 {
     if ($(event.target).attr('id') != 'shader') return;
     if (!editCategoriesShown) toggleCategory();
+
+    $('#add-milestone').css({'display': 'none'});
+    $('#login').css({'display': 'none'});
+    $('#login-form').css({'display': 'none'});
+    $('#register-form').css({'display': 'none'});
     
     $('#shader').css({'background-color': 'rgba(0, 0, 0, 0)'});
     setTimeout(() => {
@@ -112,6 +244,34 @@ function removePopup(event)
     }, 200);
 
     popupShowing = false;
+}
+
+// FORM ID must be either '#add-milestone' or '#login-form' or '#register-form'
+function togglePopupForms(formId)
+{
+    togglePopup();
+
+    if (formId != '#login-form' && formId != '#register-form') $(formId).css({'display': 'block'});
+    else
+    {
+        $('#login').css({'display': 'block'});
+        $(formId).css({'display': 'flex'});
+    }
+}
+
+function switchPopupForms(formId)
+{
+    $('#add-milestone').css({'display': 'none'});
+    $('#login').css({'display': 'none'});
+    $('#login-form').css({'display': 'none'});
+    $('#register-form').css({'display': 'none'});
+
+    if (formId != '#login-form' && formId != '#register-form') $(formId).css({'display': 'block'});
+    else
+    {
+        $('#login').css({'display': 'block'});
+        $(formId).css({'display': 'flex'});
+    }
 }
 
 // ---------- ADD MILESTONE FORM ----------
@@ -206,6 +366,7 @@ function handleSubmit(event) {
 
         if (form2.valid()) {
             //$('#form-page-2').css({'background-color': 'var(--highlightColor)'});
+            addMilestone();
             togglePopup();
         }
     }
@@ -251,6 +412,7 @@ function showPreview(event) {
     if (event.target.files.length > 0) {
         let src = URL.createObjectURL(event.target.files[0]);
         let preview = $('#preview');
+        currentImageSource = src;
         preview.attr('src', src);
         preview.css({'display': 'block'});
         $('#image-preview p').css({'display': 'none'});
@@ -271,6 +433,7 @@ function showPreviewDrag(event)
     if (event.dataTransfer.files.length > 0) {
         let src = URL.createObjectURL(event.dataTransfer.files[0]);
         let preview = $('#preview');
+        currentImageSource = src;
         preview.attr('src', src);
         preview.css({'display': 'block'});
         $('#image-preview p').css({'display': 'none'});
@@ -285,6 +448,8 @@ $('#image-dropper').on('drop', showPreviewDrag);
 
 // ---------- ADD CATEGORY FORM ----------
 let editCategoriesShown = true;
+
+$('#save-categories').click(saveCategories);
 
 function fillInInputs(categoryList)
 {
@@ -306,7 +471,30 @@ function fillInEmojis(categoryList)
     });
 }
 
-function toggleCategory()
+function saveCategories()
+{
+    let newCategories = [];
+
+    let inputs = $('.category-name');
+    let emojis = $('.emoji-button');
+
+    inputs.each((index, value) => {
+        if (value.value != '')
+        {
+            newCategories.push({
+                title: value.value,
+                emoji: emojis[index].innerText
+            });
+        }
+    });
+
+    categories = newCategories;
+    updateCategories(categories);
+    fillInCategories(categories);
+    toggleCategory();
+}
+
+async function toggleCategory()
 {
     // Fill in inputs with categories
     fillInInputs(categories);
@@ -349,5 +537,6 @@ initializeEmojiPicker(pickers);
 3. File drag and drop doesn't work
 4. CSS doesn't always align with radio inputs (when clicked, box becomes unchecked)
 5. Sometimes pressing emoji button in category editor causes popup to toggle off
+6. Have to press buttons (#add-milestone, #login-button, #register-button) twice after changing login/logout status
 
 */
