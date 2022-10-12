@@ -286,9 +286,15 @@ main {
     display: none;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: absolute;
     top: 10%;
     left: 0;
+}
+
+#milestones-empty img, #milestones-no-login img {
+    width: 150px;
+    margin-bottom: 25px;
 }
 
 #milestones-empty p, #milestones-no-login p {
