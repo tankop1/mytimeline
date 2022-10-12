@@ -33,11 +33,12 @@ export async function displayMilestones()
         if (element.layout == 'text') {
             parent.html(parent.html() + `
             <div class="milestone text-milestone">
-                <div class="milestone-text">
 
-                    <button class="primary-button" id="delete-milestone">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-                    </button>
+                <button class="primary-button delete-milestone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                </button>
+
+                <div class="milestone-text">
 
                     <h2>${element.title}</h2>
 
@@ -55,7 +56,7 @@ export async function displayMilestones()
             parent.html(parent.html() + `
             <div class="milestone picture-milestone">
 
-                <button class="primary-button" id="delete-milestone">
+                <button class="primary-button delete-milestone">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
                 </button>
 
@@ -75,7 +76,7 @@ export async function displayMilestones()
             parent.html(parent.html() + `
             <div class="milestone picture-text-milestone">
 
-                <button class="primary-button" id="delete-milestone">
+                <button class="primary-button delete-milestone">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
                 </button>
 
@@ -95,6 +96,8 @@ export async function displayMilestones()
         }
         
     });
+
+    $('.delete-milestone').click(handleDeleteMilestone);
 }
 
 function addMilestone()
@@ -135,6 +138,27 @@ function addMilestone()
 
     updateMilestones(milestones);
     displayMilestones();
+}
+
+function handleDeleteMilestone(event)
+{
+    let target = $(event.target).parent();
+    if (!$(event.target).hasClass('delete-milestone')) target = $(event.target).parent().parent();
+
+    let title = target.children('.milestone-text').children('h2').text();
+    removeMilestone(title);
+}
+
+function removeMilestone(title)
+{
+    let newMilestones = [];
+
+    milestones.forEach(value => {
+        if (value.title != title) newMilestones.push(value);
+    });
+
+    updateMilestones(newMilestones);
+    setTimeout(displayMilestones, 500);
 }
 
 $('#logout-button').click(clearMilestones);
@@ -195,7 +219,7 @@ $('#register-link').click(() => {switchPopupForms('#login-form')});
 $('#login-button').click(() => {togglePopupForms('#login-form')});
 $('#login-link').click(() => {switchPopupForms('#register-form')});
 $('#exit-login').click(togglePopup);
-$('#shader').click(removePopup)
+//$('#shader').click(removePopup);
 
 function togglePopup()
 {

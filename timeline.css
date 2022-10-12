@@ -237,7 +237,17 @@ nav #profile-button {
     transition: filter 400ms;
     margin-top: 15px;
     border: none;
-    font-family: 'Bungee';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav #profile-button img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 2.25px;
 }
 
 nav #profile-button:hover {
@@ -374,7 +384,7 @@ main {
     font-size: calc(16px * 0.75);
 }
 
-#delete-milestone {
+.delete-milestone {
     width: 30px;
     height: 30px;
     position: relative;
@@ -383,12 +393,7 @@ main {
     transform: scale(0.75);
 }
 
-.text-milestone #delete-milestone {
-    top: -25px;
-    left: 215px;
-}
-
-#delete-milestone svg {
+.delete-milestone svg {
     width: 20px;
     height: 20px;
     transform: rotate(45deg);

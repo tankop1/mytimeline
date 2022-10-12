@@ -134,6 +134,7 @@ onAuthStateChanged(auth, (user) => {
     currentUserId = '';
     showSignIn();
     $('#milestones-no-login').css({'display': 'flex'});
+    $('#milestones-empty').css({'display': 'none'});
   }
 });
 
