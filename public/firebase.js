@@ -4,7 +4,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
-import { displayMilestones } from '/JavaScript/mytimeline/timeline.js';
+import { displayMilestones } from './timeline.js';
 
 let currentUserId = '';
 

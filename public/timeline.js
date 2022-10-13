@@ -1,4 +1,4 @@
-import { getUserData, updateMilestones, updateCategories } from '/JavaScript/mytimeline/firebase.js';
+import { getUserData, updateMilestones, updateCategories } from './firebase.js';
 
 let currentImageSource = '';
 
