@@ -5,6 +5,14 @@ let currentImageSource = '';
 let categories = [];
 let milestones = [];
 
+// ---------- LOADING SCREEN ----------
+
+setTimeout(() => {
+    $(document).ready(() => {
+        $('#loading-screen').css({'display': 'none'});
+    });
+}, 1500);
+
 // ---------- ADDING MILESTONES ----------
 
 export async function displayMilestones()
@@ -35,7 +43,7 @@ export async function displayMilestones()
             <div class="milestone text-milestone">
 
                 <button class="primary-button delete-milestone">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    &times;
                 </button>
 
                 <div class="milestone-text">
@@ -57,7 +65,7 @@ export async function displayMilestones()
             <div class="milestone picture-milestone">
 
                 <button class="primary-button delete-milestone">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                &times;
                 </button>
 
                 <img src="${element.imageSource}" alt="milestone-text" />
@@ -77,7 +85,7 @@ export async function displayMilestones()
             <div class="milestone picture-text-milestone">
 
                 <button class="primary-button delete-milestone">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                &times;
                 </button>
 
                 <img src="${element.imageSource}" alt="milestone-text" />
@@ -143,8 +151,6 @@ function addMilestone()
 function handleDeleteMilestone(event)
 {
     let target = $(event.target).parent();
-    if (!$(event.target).hasClass('delete-milestone')) target = $(event.target).parent().parent();
-
     let title = target.children('.milestone-text').children('h2').text();
     removeMilestone(title);
 }
@@ -552,6 +558,23 @@ function initializeEmojiPicker(pickerList)
 }
 
 initializeEmojiPicker(pickers);
+
+// ---------- MEDIA QUERY CHANGES ----------
+
+$('#menu-button').click(() => {
+    if ($('#middle-nav').css('height') == '150px')
+    {
+        $('#middle-nav').css({'height': '0px'});
+        setTimeout(() => {
+            $('#middle-nav').css({'display': 'none'});
+        }, 250);
+    }
+
+    else {
+        $('#middle-nav').css({'display': 'flex'});
+        $('#middle-nav').css({'height': '150px'});
+    }
+});
 
 /*
 

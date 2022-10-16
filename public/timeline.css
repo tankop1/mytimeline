@@ -177,6 +177,49 @@ body {
     display: none;
 }
 
+/* ---------- LOADING SCREEN ---------- */
+
+#loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--primaryColor);
+}
+
+#loading-screen a {
+    font-family: 'Bungee', cursive;
+    text-decoration: none;
+    color: white;
+    height: 45px;
+    cursor: default;
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+#loading-screen a h1 span {
+    color: var(--highlightColor);
+}
+
+@keyframes loading {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* ---------- HEADER ---------- */
 
 header {
@@ -212,6 +255,23 @@ nav #left-nav a {
 
 nav #left-nav a h1 span {
     color: var(--highlightColor);
+}
+
+nav #menu-button {
+    display: none;
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    margin-left: 70px;
+}
+
+nav #menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav #menu-button svg {
+    width: 20px;
+    filter: invert();
 }
 
 nav #middle-nav {
@@ -397,12 +457,8 @@ main {
     top: -10px;
     left: 230px;
     transform: scale(0.75);
-}
-
-.delete-milestone svg {
-    width: 20px;
-    height: 20px;
-    transform: rotate(45deg);
+    font-size: 1.75rem;
+    color: var(--primaryColor);
 }
 
 /* ---------- TOOLS SECTION ---------- */
@@ -436,6 +492,12 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+#tools .secondary-button svg {
+    width: 12px;
+    filter: invert();
+    margin-right: 10px;
 }
 
 /* ---------- ADD ENTRY FORM ---------- */
@@ -740,4 +802,44 @@ main {
 
 #login-bottom a, #register-bottom a {
     color: var(--highlightColor);
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+@media only screen and (max-width: 1100px) {
+    nav #middle-nav {
+        display: none;
+        width: 175px;
+        height: -0px;
+        padding: 15px;
+        flex-direction: column;
+        background-color: var(--highlightColor);
+        border-radius: var(--secondaryBorderRadius);
+        position: fixed;
+        top: 60px;
+        left: calc(50% - 87.5px);
+        z-index: 200;
+        transition: height 500ms;
+        overflow: hidden;
+    }
+
+    nav #menu-button {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .hide-on-650 {
+        display: none;
+    }
+
+    #tools .secondary-button svg {
+        width: 18px;
+        margin-right: 0px;
+    }
+
+    #tools div {
+        width: 100px;
+        margin-right: 0px;
+    }
 }
