@@ -121,6 +121,7 @@ function addMilestone()
     
     let imageSource = '';
     if (layout != 'text') imageSource = currentImageSource;
+    console.log(imageSource);
 
     let categories = $('#categories .checkbox').toArray();
     let newCategories = [];
@@ -575,6 +576,180 @@ $('#menu-button').click(() => {
         $('#middle-nav').css({'height': '150px'});
     }
 });
+
+// ---------- SLIDESHOW FORM ----------
+$('#exit-slideshow-settings').click(toggleSlideshowSettings);
+$('#slideshow-button').click(toggleSlideshowSettings);
+
+$('#slideshow-settings').css({'transform': 'scale(0)'});
+
+let slideshowSettingsShowing = false;
+
+function toggleSlideshowSettings() {
+    if (slideshowSettingsShowing == false) {
+        if ($('#profile-button').css('display') == 'none') {
+            togglePopupForms('#login-form');
+            return;
+        }
+
+        $('#slideshow-settings').css({'transform': 'scale(1)'});
+        slideshowSettingsShowing = true;
+    }
+
+    else {
+        $('#slideshow-settings').css({'transform': 'scale(0)'});
+        slideshowSettingsShowing = false;
+    }
+}
+
+// ---------- SLIDESHOW ASSEMBLY ----------
+
+let autoplayIntervalId = '';
+
+$('#slideshow-submit').click(event => {
+    StopDefaultBehavior(event);
+    displaySlideshow();
+});
+
+$('#exit-slideshow').click(event => {
+    $('#slideshow').css({'left': '100vw'});
+    $('#exit-slideshow').css({'display': 'none'});
+    $('#audio-player')[0].pause();
+});
+
+async function displaySlideshow()
+{
+    $('#slideshow-settings form').validate();
+
+    if (!$('#slideshow-settings form').valid()) return;
+
+    setTimeout(() => {
+        $('#exit-slideshow').css({'display': 'flex'});
+    }, 400);
+
+    toggleSlideshowSettings();
+
+    let data = await getUserData();
+    milestones = data.milestones;
+    categories = data.categories;
+
+    $('#slideshow').css({'left': '0'});
+
+    let parent = $('#slideshow-container');
+    parent.html('');
+    $('#slideshow-container').css({'margin-left': '0'});
+
+    if (data.milestones.length == 0)
+    {
+        alert('You must have at least one milestone to make a slideshow.');
+        return;
+    }
+
+    let color = $('input[name="color"]:checked').val();
+
+    data.milestones.forEach(element => {
+
+        let categoryHTML = '';
+
+        element.categories.forEach(category => {
+            categoryHTML += `<div class="category">
+            <p>${category.emoji}</p>
+            <h3>${category.title}</h3>
+        </div>`;
+        });
+
+        if (element.layout == 'text') {
+            parent.html(parent.html() + `
+            <div class="slide text-slide" style="background-color: ${color};">
+
+                <div class="slide-text">
+
+                    <h1 class="slide-title">
+                        ${element.title}
+                        <span class="slide-date">${element.date.month + '/' + element.date.day + '/' + element.date.year}</span>
+                    </h1>
+
+                    <p class="slide-description">
+                        ${element.description}
+                    </p>
+
+                    <div class="slide-categories">
+                        ${categoryHTML}
+                    </div>
+
+                </div>
+
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture') {
+            parent.html(parent.html() + `
+            <div class="slide picture-slide" style="background-image: url(${element.imageSource});">
+
+                <div class="slide-text">
+
+                    <h1 class="slide-title">
+                        ${element.title}
+                        <span class="slide-date">${element.date.month + '/' + element.date.day + '/' + element.date.year}</span>
+                    </h1>
+
+                    <div class="slide-categories">
+                        ${categoryHTML}
+                    </div>
+
+                </div>
+
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture-text') {
+            parent.html(parent.html() + `
+            <div class="slide picture-text-slide" style="background-image: url(${element.imageSource});">
+
+                <div class="slide-text">
+
+                    <h1 class="slide-title">
+                        ${element.title}
+                        <span class="slide-date">${element.date.month + '/' + element.date.day + '/' + element.date.year}</span>
+                    </h1>
+
+                    <p class="slide-description">
+                        ${element.description}
+                    </p>
+
+                    <div class="slide-categories">
+                        ${categoryHTML}
+                    </div>
+
+                </div>
+
+            </div>
+            `);
+        }
+    });
+
+    let music = $('input[name="music"]:checked').val();
+    $('#audio-player').attr('src', music);
+    $('#audio-player')[0].play();
+
+    autoplaySlideshow($('#delay').val() * 1000);
+}
+
+function autoplaySlideshow(delay) {
+    let slides = $('.slide').length;
+    let currentSlide = 1;
+
+    clearInterval(autoplayIntervalId);
+
+    autoplayIntervalId = setInterval(() => {
+        if (currentSlide >= slides) currentSlide = 0;
+
+        $('#slideshow-container').css({'margin-left': -100 * currentSlide + 'vw'});
+        currentSlide++;
+    }, delay);
+}
 
 /*
 

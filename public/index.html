@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mylestones</title>
+    <title>Mylestones | Home</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -83,7 +83,7 @@
             </button>
 
             <div>
-                <a href="#" class="secondary-button">
+                <a href="#" class="secondary-button" id="slideshow-button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 416c0-17.7 14.3-32 32-32l54.7 0c12.3-28.3 40.5-48 73.3-48s61 19.7 73.3 48L480 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-246.7 0c-12.3 28.3-40.5 48-73.3 48s-61-19.7-73.3-48L32 448c-17.7 0-32-14.3-32-32zm192 0c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zM384 256c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zm-32-80c32.8 0 61 19.7 73.3 48l54.7 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-54.7 0c-12.3 28.3-40.5 48-73.3 48s-61-19.7-73.3-48L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l246.7 0c12.3-28.3 40.5-48 73.3-48zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32s-14.3-32-32-32zm73.3 0L480 64c17.7 0 32 14.3 32 32s-14.3 32-32 32l-214.7 0c-12.3 28.3-40.5 48-73.3 48s-61-19.7-73.3-48L32 128C14.3 128 0 113.7 0 96S14.3 64 32 64l86.7 0C131 35.7 159.2 16 192 16s61 19.7 73.3 48z"/></svg>
                     <span class="hide-on-650">Make A Slideshow</span>
                 </a>
@@ -163,7 +163,7 @@
     
                 <form id="form-2">
     
-                    <textarea class="textarea" id="description" placeholder="Description" maxlength="100" required></textarea>
+                    <textarea class="textarea" id="description" placeholder="Description" maxlength="200" required></textarea>
     
                     <div id="upload-image">
                         <div id="image-preview">
@@ -290,6 +290,80 @@
             <h1><span>My</span>lestones</h1>
         </a>
 
+    </div>
+
+    <div id="slideshow-settings">
+
+        <button class="primary-button" id="exit-slideshow-settings">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+        </button>
+
+        <form>
+
+            <h2>Music Theme</h2>
+
+            <div id="music">
+                <label for="action" class="radio">
+                    <input type="radio" id="action" name="music" value="assets/music/Action.wav" required />
+                    <img src="assets/jeff-kingma--lLWCvEoFJM-unsplash.jpg" alt="action-image" />
+                </label>
+
+                <label for="jazzy" class="radio">
+                    <input type="radio" id="jazzy" name="music" value="assets/music/Jazz.wav" required />
+                    <img src="assets/jens-thekkeveettil-dBWvUqBoOU8-unsplash.jpg" alt="jazzy-image" />
+                </label>
+
+                <label for="playful" class="radio">
+                    <input type="radio" id="playful" name="music" value="assets/music/Playful.wav" required />
+                    <img src="assets/sergey-shmidt-koy6FlCCy5s-unsplash.jpg" alt="playful-image" />
+                </label>
+
+                <label for="gloomy" class="radio">
+                    <input type="radio" id="gloomy" name="music" value="assets/music/Gloomy.wav" required />
+                    <img src="assets/elyse-chia-At-UY6zFrLU-unsplash.jpg" alt="gloomy-image" />
+                </label>
+
+                <label for="epic" class="radio radio-checked">
+                    <input type="radio" id="epic" name="music" value="assets/music/Epic.wav" checked required />
+                    <img src="assets/ross-sneddon-6iIPZMfoYAo-unsplash.jpg" alt="epic-image" />
+                </label>
+            </div>
+
+            <h2 id="colors-title">Color Palette</h2>
+
+            <div id="colors">
+                <label for="color-1" class="radio">
+                    <input type="radio" id="color-1" name="color" value="#0D0656" required />
+                    <img src="assets/Single Color Icon-Navy.png" alt="color-1-image" />
+                </label>
+
+                <label for="color-2" class="radio">
+                    <input type="radio" id="color-2" name="color" value="#E4014C" required />
+                    <img src="assets/Single Color Icon-Pink.png" alt="color-2-image" />
+                </label>
+
+                <label for="color-3" class="radio radio-checked">
+                    <input type="radio" id="color-3" name="color" value="#00B5A0" checked required />
+                    <img src="assets/Single Color Icon-Default.png" alt="color-3-image" />
+                </label>
+            </div>
+
+            <h2 id="delay-title">Slide Delay</h2>
+
+            <input type="number" class="input" id="delay" placeholder="Delay" min="1" max="30" required />
+
+            <button class="primary-button" id="slideshow-submit">Play Slideshow</button>
+
+            <audio id="audio-player" src="assets/music/Action.wav" style="display: none;" loop></audio>
+
+        </form>
+
+    </div>
+
+    <div id="slideshow">
+        <button class="primary-button" id="exit-slideshow">Back To Home</button>
+
+        <div id="slideshow-container"></div>
     </div>
 
     <script type="module" src="timeline.js"></script>
