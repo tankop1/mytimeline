@@ -153,7 +153,10 @@ function handleDeleteMilestone(event)
 {
     let target = $(event.target).parent();
     let title = target.children('.milestone-text').children('h2').text();
-    removeMilestone(title);
+
+    let response = prompt(`Type "delete" to remove "${title}"`, "");
+
+    if (response.toLowerCase() == 'delete') removeMilestone(title);
 }
 
 function removeMilestone(title)
