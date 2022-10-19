@@ -436,9 +436,22 @@ function clearForm()
     preview.attr('src', '#');
     preview.css({'display': 'none'});
     $('#image-preview p').css({'display': 'block'});
+
+    $('#image-dropper').val('');
+
 }
 
 // PAGE TWO
+function showPreview() {
+    let src = $('#image-dropper').val();
+    let preview = $('#preview');
+    currentImageSource = src;
+    preview.attr('src', src);
+    preview.css({'display': 'block'});
+    $('#image-preview p').css({'display': 'none'});
+}
+
+/*
 function showPreview(event) {
     if (event.target.files.length > 0) {
         let src = URL.createObjectURL(event.target.files[0]);
@@ -449,6 +462,7 @@ function showPreview(event) {
         $('#image-preview p').css({'display': 'none'});
     }
 }
+*/
 
 function StopDefaultBehavior(event)
 {
@@ -456,26 +470,7 @@ function StopDefaultBehavior(event)
     event.stopPropagation();
 }
 
-function showPreviewDrag(event)
-{
-    StopDefaultBehavior(event);
-    console.log(event.dataTransfer);
-
-    if (event.dataTransfer.files.length > 0) {
-        let src = URL.createObjectURL(event.dataTransfer.files[0]);
-        let preview = $('#preview');
-        currentImageSource = src;
-        preview.attr('src', src);
-        preview.css({'display': 'block'});
-        $('#image-preview p').css({'display': 'none'});
-    }
-}
-
-$('#image-dropper').on('change', showPreview);
-$('#image-dropper').on('dragleave', StopDefaultBehavior);
-$('#image-dropper').on('dragenter', StopDefaultBehavior);
-$('#image-dropper').on('dragover', StopDefaultBehavior);
-$('#image-dropper').on('drop', showPreviewDrag);
+$('#image-dropper').on('input', showPreview);
 
 // ---------- ADD CATEGORY FORM ----------
 let editCategoriesShown = true;
@@ -580,6 +575,7 @@ $('#menu-button').click(() => {
 // ---------- SLIDESHOW FORM ----------
 $('#exit-slideshow-settings').click(toggleSlideshowSettings);
 $('#slideshow-button').click(toggleSlideshowSettings);
+$('#slideshow-nav-button').click(toggleSlideshowSettings);
 
 $('#slideshow-settings').css({'transform': 'scale(0)'});
 
@@ -749,6 +745,24 @@ function autoplaySlideshow(delay) {
         $('#slideshow-container').css({'margin-left': -100 * currentSlide + 'vw'});
         currentSlide++;
     }, delay);
+}
+
+// ---------- HELP ----------
+
+$('#help-button').click(showHelp);
+$('#help-nav-button').click(showHelp);
+
+$('#exit-help').click(event => {
+    $('#help').css({'left': '-100vw'});
+    $('#exit-help').css({'display': 'none'});
+});
+
+function showHelp() {
+    $('#help').css({'left': '0'});
+
+    setTimeout(() => {
+        $('#exit-help').css({'display': 'flex'});
+    }, 400);
 }
 
 /*
