@@ -752,7 +752,7 @@ function autoplaySlideshow(delay) {
 
 // ---------- HELP ----------
 
-$('#help-button').click(showHelp);
+$('#resume-button').click();
 $('#help-nav-button').click(showHelp);
 
 $('#exit-help').click(event => {
@@ -766,6 +766,119 @@ function showHelp() {
     setTimeout(() => {
         $('#exit-help').css({'display': 'flex'});
     }, 400);
+}
+
+// ---------- RESUME ----------
+
+$('#resume-button').click(showResume);
+$('#print-resume').click(printResume);
+
+$('#exit-resume').click(event => {
+    $('#resume').css({'right': '-100vw'});
+    $('#exit-resume').css({'display': 'none'});
+    $('#print-resume').css({'display': 'none'});
+});
+
+function showResume() {
+    displayResume();
+    $('#resume').css({'right': '0'});
+
+    setTimeout(() => {
+        $('#exit-resume').css({'display': 'flex'});
+        $('#print-resume').css({'display': 'flex'});
+    }, 400);
+}
+
+async function displayResume()
+{
+    let data = await getUserData();
+
+    let parent = $('#resume-milestones');
+    parent.html('');
+
+    if (data.milestones.length == 0)
+    {
+        alert("You must have at least one milestone to continue");
+        return;
+    }
+
+    data.milestones.forEach(element => {
+
+        let categoryHTML = '';
+
+        element.categories.forEach(category => {
+            categoryHTML += `<div class="category">
+            <p>${category.emoji}</p>
+            <h3>${category.title}</h3>
+        </div>`;
+        });
+
+        if (element.layout == 'text') {
+            parent.html(parent.html() + `
+            <div class="milestone text-milestone">
+
+                <div class="milestone-text">
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+
+                    <p class="description">${element.description}</p>
+
+                </div>
+                
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture') {
+            parent.html(parent.html() + `
+            <div class="milestone picture-milestone">
+
+                <img src="${element.imageSource}" alt="milestone-text" />
+                <div class="milestone-text">
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+                </div>
+                
+            </div>
+            `);
+        }
+
+        else if (element.layout == 'picture-text') {
+            parent.html(parent.html() + `
+            <div class="milestone picture-text-milestone">
+
+                <img src="${element.imageSource}" alt="milestone-text" />
+                <div class="milestone-text">
+
+                    <h2>${element.title}</h2>
+
+                    <div class="milestone-categories">${categoryHTML}</div>
+
+                    <p class="description">${element.description}</p>
+
+                </div>
+                
+            </div>
+            `);
+        }
+        
+    });
+}
+
+function printResume() {
+    $('#resume').css({'padding': '0'});
+    $('#resume section').css({'width': '100%', 'margin-left': '0', 'border-radius': '0px'});
+    $('#exit-resume').css({'display': 'none'});
+    $('#print-resume').css({'display': 'none'});
+    print();
+    $('#resume').css({'padding': '50px 0px'});
+    $('#resume section').css({'width': '850px', 'margin-left': 'calc(50% - 425px)', 'border-radius': 'var(--secondaryBorderRadius)'});
+    $('#exit-resume').css({'display': 'flex'});
+    $('#print-resume').css({'display': 'flex'});
 }
 
 /*

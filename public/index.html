@@ -88,9 +88,9 @@
                     <span class="hide-on-650">Make A Slideshow</span>
                 </a>
 
-                <a href="#" class="secondary-button" id="help-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 96c-17.7 0-32 14.3-32 32s-14.3 32-32 32s-32-14.3-32-32C0 75 43 32 96 32h97c70.1 0 127 56.9 127 127c0 52.4-32.2 99.4-81 118.4l-63 24.5 0 18.1c0 17.7-14.3 32-32 32s-32-14.3-32-32V301.9c0-26.4 16.2-50.1 40.8-59.6l63-24.5C240 208.3 256 185 256 159c0-34.8-28.2-63-63-63H96zm48 384c-22.1 0-40-17.9-40-40s17.9-40 40-40s40 17.9 40 40s-17.9 40-40 40z"/></svg>
-                    <span class="hide-on-650">Get Some Help</span>
+                <a href="#" class="secondary-button" id="resume-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg>
+                    <span class="hide-on-650">Print A Resume</span>
                 </a>
             </div>
 
@@ -302,7 +302,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
         </button>
 
-        <form>
+        <form id="slideshow-form">
 
             <h2>Music Theme</h2>
 
@@ -337,8 +337,8 @@
 
             <div id="colors">
                 <label for="color-1" class="radio">
-                    <input type="radio" id="color-1" name="color" value="#0D0656" required />
-                    <img src="assets/Single Color Icon-Navy.png" alt="color-1-image" />
+                    <input type="radio" id="color-1" name="color" value="#3724FD" required />
+                    <img src="assets/Single Color Icon-Blue.png" alt="color-1-image" />
                 </label>
 
                 <label for="color-2" class="radio">
@@ -349,6 +349,11 @@
                 <label for="color-3" class="radio radio-checked">
                     <input type="radio" id="color-3" name="color" value="#00B5A0" checked required />
                     <img src="assets/Single Color Icon-Default.png" alt="color-3-image" />
+                </label>
+
+                <label for="color-4" class="radio">
+                    <input type="radio" id="color-4" name="color" value="#FDED01" checked />
+                    <img src="assets/Single Color Icon-Yellow.png" alt="color-4-image" />
                 </label>
             </div>
 
@@ -380,6 +385,19 @@
 
             <h1>How It Works</h1>
             <p>Using the Mylestones app is really simple. First, create an account or login using the buttons on the top right. Once you've signed in, press the big plus in the bottom left corner to add a milestone. Fill out the form with some details about the milestone, and press "add milestone" to add the milestone to your account. If you want to show off your milestones, press the "make a slideshow" button on the bottom right and configure the settings for the slideshow. Finally, hit the "Make slideshow" button, and watch your memories come to life! If you have any questions or concerns, please email me at tanner@kopelfamily.com</p>
+
+        </section>
+    </div>
+
+    <div id="resume">
+        <button class="primary-button" id="print-resume">Print Resume</button>
+        <button class="primary-button" id="exit-resume">Back To Home</button>
+
+        <section>
+
+            <h1>Tanner's <span>My</span>lestones</h1>
+
+            <div id="resume-milestones"></div>
 
         </section>
     </div>

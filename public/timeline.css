@@ -943,7 +943,7 @@ main {
 }
 
 
-#slideshow-settings form {
+#slideshow-settings #slideshow-form {
     width: calc(100% - 50px);
     height: calc(100%);
     margin-left: 50px;
@@ -951,42 +951,112 @@ main {
     font-family: 'Bungee', cursive;
 }
 
-#slideshow-settings form #music {
+#slideshow-settings #slideshow-form #music {
     width: 800px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#slideshow-settings form #music .radio img {
+#slideshow-settings #slideshow-form #music .radio img {
     width: 90%;
     height: 90%;
     border-radius: var(--smallBorderRadius);
     object-fit: cover;
 }
 
-#slideshow-settings form #colors {
-    width: 465px;
+#slideshow-settings #slideshow-form #colors {
+    width: 633px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#slideshow-settings form #colors .radio img {
+#slideshow-settings #slideshow-form #colors .radio img {
     width: 95%;
 }
 
-#slideshow-settings #colors-title {
+#slideshow-settings #slideshow-form #colors-title {
     margin-top: 50px;
 }
 
-#slideshow-settings #delay-title {
+#slideshow-settings #slideshow-form #delay-title {
     margin-top: 50px;
 }
 
-#slideshow-settings #slideshow-submit {
+#slideshow-settings #slideshow-form #slideshow-submit {
     margin-top: 65px;
     width: 150px;
+}
+
+/* ---------- RESUME PRINTOUT ---------- */
+
+#resume {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    transition: right 300ms;
+    overflow-y: scroll;
+    padding: 50px 0px;
+}
+
+#exit-resume {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    box-shadow: 0px 0px 15px 2px rgb(125, 125, 125);
+    display: none;
+}
+
+#print-resume {
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    box-shadow: 0px 0px 15px 2px rgb(125, 125, 125);
+    display: none;
+}
+
+#resume section {
+    width: 850px;
+    min-height: 1100px;
+    background-color: var(--primaryColor);
+    margin-left: calc(50% - 425px);
+    border-radius: var(--secondaryBorderRadius);
+    box-shadow: 0px 0px 8px 1px rgb(90, 90, 90);
+}
+
+#resume section h1 {
+    width: 100%;
+    font-family: 'Bungee';
+    color: white;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 2.25rem;
+}
+
+#resume section h1 span {
+    color: var(--highlightColor);
+}
+
+#resume-milestones {
+    width: 600px;
+    margin-left: calc(50% - 300px);
+    margin-top: 0px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#resume-milestones .milestone {
+    margin-top: 50px;
+}
+
+#resume-milestones .text-milestone h2 {
+    margin-top: 5px;
 }
 
 /* ---------- SLIDESHOW ---------- */
