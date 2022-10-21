@@ -752,7 +752,6 @@ function autoplaySlideshow(delay) {
 
 // ---------- HELP ----------
 
-$('#resume-button').click();
 $('#help-nav-button').click(showHelp);
 
 $('#exit-help').click(event => {
@@ -780,6 +779,14 @@ $('#exit-resume').click(event => {
 });
 
 function showResume() {
+    if ($('#profile-button').css('display') == 'none') {
+        togglePopupForms('#login-form');
+        return;
+    }
+
+    let name = prompt(`What is your name?`, "User");
+    $('#resume-title').html(`${name}'s <span>My</span>lestones`);
+
     displayResume();
     $('#resume').css({'right': '0'});
 
