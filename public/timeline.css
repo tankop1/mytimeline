@@ -225,19 +225,20 @@ body {
 
 header {
     width: 100%;
-    height: 80px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 nav {
-    width: 95%;
+    width: 100%;
+    padding: 0 2.5%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: -20px;
+    margin-top: -40px;
 }
 
 nav #left-nav {
@@ -949,6 +950,7 @@ main {
     margin-left: 50px;
     color: var(--primaryColor);
     font-family: 'Bungee', cursive;
+    overflow: scroll;
 }
 
 #slideshow-settings #slideshow-form #music {
@@ -984,9 +986,14 @@ main {
     margin-top: 50px;
 }
 
+#slideshow-settings #slideshow-form #delay {
+    margin-left: 3px;
+}
+
 #slideshow-settings #slideshow-form #slideshow-submit {
     margin-top: 65px;
     width: 150px;
+    margin-bottom: 50px;
 }
 
 /* ---------- RESUME PRINTOUT ---------- */
@@ -1026,6 +1033,7 @@ main {
     margin-left: calc(50% - 425px);
     border-radius: var(--secondaryBorderRadius);
     box-shadow: 0px 0px 8px 1px rgb(90, 90, 90);
+    padding-bottom: 75px;
 }
 
 #resume section h1 {
