@@ -326,7 +326,7 @@ nav #logout-button {
 /* ---------- MAIN TIMELINE ---------- */
 
 main {
-    height: calc(100% - 60px);
+    height: calc(100% - 100px);
 }
 
 #milestones {
@@ -472,21 +472,21 @@ main {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 150px;
+    height: 165px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 50px;
     background-color: var(--primaryColor);
-    box-shadow: 0px 8px 6px 10px var(--primaryColor);
+    box-shadow: 0px 0px 12px 10px var(--primaryColor);
 }
 
 #tools button {
     border-radius: 50%;
     width: 65px;
     height: 65px;
-    box-shadow: 0px 0px 10px 1px black;
+    box-shadow: 0px 0px 10px 1px rgb(20, 20, 20);
 }
 
 #tools button svg {
