@@ -34,8 +34,11 @@ const db = getFirestore(app);
 
 $('#login-submit').click(submitLogin);
 
-function submitLogin()
+function submitLogin(event)
 {
+  event.preventDefault();
+  event.stopPropagation();
+
   let loginForm = $('#login-form');
   loginForm.validate();
 
@@ -60,8 +63,11 @@ function submitLogin()
 
 $('#register-submit').click(submitRegister);
 
-function submitRegister()
+function submitRegister(event)
 {
+  event.preventDefault();
+  event.stopPropagation();
+
   let registerForm = $('#register-form');
   registerForm.validate();
 

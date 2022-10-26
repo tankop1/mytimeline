@@ -779,7 +779,12 @@ $('#exit-resume').click(event => {
 });
 
 function showResume() {
-    if ($('#profile-button').css('display') == 'none') {
+    if (window.innerWidth < 885) {
+        alert("The print feature only works on larger devices");
+        return;
+    }
+
+    else if ($('#profile-button').css('display') == 'none') {
         togglePopupForms('#login-form');
         return;
     }
